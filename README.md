@@ -51,3 +51,13 @@ powershell -ExecutionPolicy Bypass -File win-light-speed.ps1 -Undo
 ## License
 
 MIT
+
+## 🫧 記憶體衛士（memory-guard.ps1）
+
+開機自動瘦身：只關「非必要」的重複/後台進程（Steam 網頁助手、NVIDIA Overlay、WebView2 殘留），
+**實測每次釋放 1GB+**。絕不動系統關鍵（Defender/explorer），絕不動你的程式。
+
+```powershell
+# 開機自動執行（登入後 60 秒瘦身）
+schtasks /create /tn "MemoryGuard" /tr "powershell -ExecutionPolicy Bypass -WindowStyle Hidden -File C:\path\to\memory-guard.ps1" /sc onlogon /delay 0001:00 /f
+```
